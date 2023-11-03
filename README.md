@@ -4,7 +4,8 @@
 You will need to crveate a nodemon.json file with the bot token and de name of the telegram user
 
 Example:
-```json{
+```json
+{
     "env": {
         "TELEGRAM_BOT_TOKEN": "6452877782:AAG7f6H5b-JRpiKHUXb5BfRrveKiQoLM0j4",
         "BOSS": "Volzgang"
