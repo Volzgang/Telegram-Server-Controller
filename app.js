@@ -65,7 +65,18 @@ bot.on(['/whatday', '/getdate', '/whattime', '/gettime'],
 });
 
 bot.on(['/getcv','/getcurriculum', '/getcurriculumvitae'],
-    async (msg) => { msg.reply.text(isBoss(msg) ? await bot.sendDocument() : "You can't tell me what to do");
+    async (msg) => { 
+    if(isBoss(msg)) {
+        if(fs.existsSync('download/Curriculum.pdf')){
+            msg.reply.text("Here It Goes");
+            const document = await fs.createReadStream('download/Curriculum.pdf')
+            bot.sendDocument(msg.chat.id, document)
+        } else {
+            msg.reply.text("No Curriculum");    
+        }
+    } else {
+        msg.reply.text("You can't tell me what to do");
+    }
 });
 
 bot.on('document',
